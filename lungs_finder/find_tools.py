@@ -19,6 +19,7 @@ def find_max_rectangle(rectangles):
 
 
 def get_lungs(image, padding=15):
+    mask = np.zeros(image.shape)
     right_lung = hog_finder.find_right_lung_hog(image)
     left_lung = hog_finder.find_left_lung_hog(image)
 
@@ -85,5 +86,5 @@ def get_lungs(image, padding=15):
 
     top_y = min(y_right, y_left)
     bottom_y = max(y_right + height_right, y_left + height_left)
-
-    return image[top_y:bottom_y, x_right:x_left + width_left]
+    mask[top_y:bottom_y, x_right:x_left + width_left] = np.ones(mask[top_y:bottom_y, x_right:x_left + width_left].shape)
+    return mask

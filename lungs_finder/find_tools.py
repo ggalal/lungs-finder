@@ -1,7 +1,7 @@
 from . import haar_finder
 from . import hog_finder
 from . import lbp_finder
-
+import numpy as np
 
 def find_max_rectangle(rectangles):
     max_rectangle = None
